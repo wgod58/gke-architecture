@@ -1,0 +1,7 @@
+node_modules
+.serverless
+.env
+comment-management
+k8s-online-smaple
+member-management
+proxy-server

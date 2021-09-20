@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web2
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: web2
+  template:
+    metadata:
+      labels:
+        run: web2
+    spec:
+      containers:
+        - image: gcr.io/xend-326306/member-management:latest
+          imagePullPolicy: IfNotPresent
+          name: web2
+          ports:
+            - name: liveness-port
+              containerPort: 5020
+              protocol: TCP
+          # env
+          env:
+            - name: DB_ACCOUNT
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+            - name: DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: database
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection-ip
+                  key: db_host
