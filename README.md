@@ -211,12 +211,12 @@ Open browser and check this endpoint
 
 - http://localhost:5010/comment-management/api-docs/
 
-### For comment management
+### For member management
 
 ```sh
-git clone git@github.com:wgod58/comment-management.git
+git clone git@github.com:wgod58/member-management.git
 
-cd comment-management
+cd member-management
 
 yarn install
 
